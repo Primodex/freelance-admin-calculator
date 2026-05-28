@@ -1,112 +1,356 @@
-<h2 class="sr-only">Interactive calculator that estimates how many hours and dollars per year a freelancer loses to admin work.</h2>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>How Much Is Admin Costing You? | The Freelancer Freedom Index 2026 | Smallpdf</title>
+<meta name="description" content="See how many hours and dollars a year you're losing to admin work. Based on the 2026 Smallpdf Freelancer Freedom Index survey of 397 freelancers.">
+<style>
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, "Inter", "Segoe UI", Roboto, sans-serif;
+    background: #ffffff;
+    margin: 0;
+    padding: 2rem 1rem;
+    color: #1A1A1A;
+  }
+  .sp-calc {
+    background: #ffffff;
+    border-radius: 16px;
+    padding: 2rem 1.75rem;
+    color: #1A1A1A;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.04), 0 0 0 1px rgba(0,0,0,0.04);
+    max-width: 720px;
+    margin: 0 auto;
+  }
+  .sp-calc-header {
+    margin-bottom: 0.5rem;
+  }
+  .sp-calc-h1 {
+    margin: 0;
+    font-size: 24px;
+    font-weight: 700;
+    color: #1A1A1A;
+    letter-spacing: -0.01em;
+  }
+  .sp-calc-intro {
+    margin: 0 0 1.75rem;
+    font-size: 15px;
+    color: #5C5C5C;
+    line-height: 1.6;
+  }
+  .sp-calc-card {
+    background: #F7F7F8;
+    border-radius: 12px;
+    padding: 1.5rem 1.5rem 1.25rem;
+    margin-bottom: 1.25rem;
+  }
+  .sp-calc-slider-row {
+    margin-bottom: 1.1rem;
+  }
+  .sp-calc-slider-row:last-of-type {
+    margin-bottom: 1.5rem;
+  }
+  .sp-calc-slider-head {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 8px;
+  }
+  .sp-calc-label {
+    font-size: 14px;
+    font-weight: 500;
+    color: #1A1A1A;
+  }
+  .sp-calc-value {
+    font-size: 14px;
+    font-weight: 700;
+    color: #FB3018;
+    min-width: 28px;
+    text-align: right;
+  }
+  .sp-calc input[type="range"] {
+    width: 100%;
+    -webkit-appearance: none;
+    appearance: none;
+    height: 6px;
+    background: #E5E5E7;
+    border-radius: 3px;
+    outline: none;
+  }
+  .sp-calc input[type="range"]::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    appearance: none;
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    background: #FB3018;
+    cursor: pointer;
+    border: 3px solid #ffffff;
+    box-shadow: 0 1px 3px rgba(251, 48, 24, 0.3);
+    transition: transform 0.1s;
+  }
+  .sp-calc input[type="range"]::-webkit-slider-thumb:hover {
+    transform: scale(1.1);
+  }
+  .sp-calc input[type="range"]::-moz-range-thumb {
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    background: #FB3018;
+    cursor: pointer;
+    border: 3px solid #ffffff;
+    box-shadow: 0 1px 3px rgba(251, 48, 24, 0.3);
+  }
+  .sp-calc-rate-section {
+    border-top: 1px solid #E5E5E7;
+    padding-top: 1.25rem;
+  }
+  .sp-calc-rate-label {
+    display: block;
+    font-size: 13px;
+    font-weight: 500;
+    color: #5C5C5C;
+    margin-bottom: 8px;
+  }
+  .sp-calc-rate-input-wrap {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    max-width: 200px;
+  }
+  .sp-calc-rate-symbol {
+    font-size: 16px;
+    font-weight: 500;
+    color: #5C5C5C;
+  }
+  .sp-calc input[type="number"] {
+    flex: 1;
+    height: 40px;
+    padding: 0 12px;
+    border: 1px solid #D5D5D7;
+    border-radius: 8px;
+    font-size: 15px;
+    font-family: inherit;
+    background: #ffffff;
+    color: #1A1A1A;
+    transition: border-color 0.15s, box-shadow 0.15s;
+  }
+  .sp-calc input[type="number"]:focus {
+    outline: none;
+    border-color: #FB3018;
+    box-shadow: 0 0 0 3px rgba(251, 48, 24, 0.12);
+  }
+  .sp-calc-stats {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(170px, 1fr));
+    gap: 12px;
+    margin-bottom: 1rem;
+  }
+  .sp-calc-stat {
+    background: #F7F7F8;
+    border-radius: 12px;
+    padding: 1.25rem 1.25rem;
+  }
+  .sp-calc-stat-highlight {
+    background: #FB3018;
+    color: #ffffff;
+  }
+  .sp-calc-stat-label {
+    font-size: 13px;
+    color: #5C5C5C;
+    margin-bottom: 8px;
+    font-weight: 500;
+  }
+  .sp-calc-stat-highlight .sp-calc-stat-label {
+    color: rgba(255,255,255,0.85);
+  }
+  .sp-calc-stat-value {
+    font-size: 30px;
+    font-weight: 700;
+    color: #1A1A1A;
+    letter-spacing: -0.02em;
+  }
+  .sp-calc-stat-highlight .sp-calc-stat-value {
+    color: #ffffff;
+  }
+  .sp-calc-compare {
+    font-size: 13px;
+    color: #5C5C5C;
+    margin: 0 0 1.5rem;
+    line-height: 1.6;
+  }
+  .sp-calc-compare strong {
+    color: #1A1A1A;
+    font-weight: 600;
+  }
+  .sp-calc-actions {
+    display: flex;
+    gap: 12px;
+    align-items: center;
+    margin-bottom: 1.25rem;
+    flex-wrap: wrap;
+  }
+  .sp-calc button {
+    font-size: 14px;
+    font-weight: 600;
+    font-family: inherit;
+    background: #1A1A1A;
+    color: #ffffff;
+    border: none;
+    border-radius: 8px;
+    padding: 10px 18px;
+    cursor: pointer;
+    transition: background 0.15s, transform 0.05s;
+  }
+  .sp-calc button:hover {
+    background: #333333;
+  }
+  .sp-calc button:active {
+    transform: scale(0.98);
+  }
+  .sp-calc-feedback {
+    font-size: 13px;
+    font-weight: 500;
+    color: #10864F;
+    opacity: 0;
+    transition: opacity 0.2s;
+  }
+  .sp-calc-footnote {
+    font-size: 12px;
+    color: #8C8C8C;
+    line-height: 1.6;
+    padding: 0;
+    margin: 0;
+  }
+  .sr-only {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0,0,0,0);
+    white-space: nowrap;
+    border: 0;
+  }
+</style>
+</head>
+<body>
 
-<div style="padding: 1rem 0;">
+<h2 class="sr-only">Interactive calculator that estimates how many hours and dollars per year a freelancer loses to admin work, based on the 2026 Smallpdf Freelancer Freedom Index survey of 397 freelancers, consultants, and solo operators.</h2>
 
-<div style="display: flex; align-items: baseline; justify-content: space-between; margin-bottom: 0.5rem; flex-wrap: wrap; gap: 8px;">
-  <h1 style="margin: 0; font-size: 22px; font-weight: 500;">How much is admin costing you?</h1>
-  <span style="display: inline-block; background: var(--color-background-warning); color: var(--color-text-warning); font-size: 11px; padding: 3px 10px; border-radius: var(--border-radius-md); font-weight: 500;">Demo data</span>
-</div>
+<div class="sp-calc">
 
-<p style="margin: 0 0 1.5rem; font-size: 14px; color: var(--color-text-secondary); line-height: 1.6;">Tell us about a typical month. We'll show you what your paperwork is actually worth in hours and dollars.</p>
+  <div class="sp-calc-header">
+    <h1 class="sp-calc-h1">How much is admin costing you?</h1>
+  </div>
 
-<div style="background: var(--color-background-secondary); border-radius: var(--border-radius-lg); padding: 1.25rem; margin-bottom: 1.25rem;">
+  <p class="sp-calc-intro">Tell us about a typical month. We'll show you what your paperwork is actually worth in hours and dollars.</p>
 
-  <div style="margin-bottom: 1rem;">
-    <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 6px;">
-      <label for="proposals2" style="font-size: 14px; font-weight: 500;">Proposals sent per month</label>
-      <span id="proposals2-out" style="font-size: 14px; font-weight: 500; min-width: 28px; text-align: right;">5</span>
+  <div class="sp-calc-card">
+
+    <div class="sp-calc-slider-row">
+      <div class="sp-calc-slider-head">
+        <label for="sp-proposals" class="sp-calc-label">Proposals sent per month</label>
+        <span id="sp-proposals-out" class="sp-calc-value">3</span>
+      </div>
+      <input type="range" id="sp-proposals" min="0" max="40" step="1" value="3">
     </div>
-    <input type="range" id="proposals2" min="0" max="40" step="1" value="5" style="width: 100%;" />
-  </div>
 
-  <div style="margin-bottom: 1rem;">
-    <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 6px;">
-      <label for="contracts2" style="font-size: 14px; font-weight: 500;">Contracts or NDAs per month</label>
-      <span id="contracts2-out" style="font-size: 14px; font-weight: 500; min-width: 28px; text-align: right;">4</span>
+    <div class="sp-calc-slider-row">
+      <div class="sp-calc-slider-head">
+        <label for="sp-contracts" class="sp-calc-label">Contracts or NDAs per month</label>
+        <span id="sp-contracts-out" class="sp-calc-value">2</span>
+      </div>
+      <input type="range" id="sp-contracts" min="0" max="40" step="1" value="2">
     </div>
-    <input type="range" id="contracts2" min="0" max="40" step="1" value="4" style="width: 100%;" />
-  </div>
 
-  <div style="margin-bottom: 1rem;">
-    <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 6px;">
-      <label for="invoices2" style="font-size: 14px; font-weight: 500;">Invoices issued per month</label>
-      <span id="invoices2-out" style="font-size: 14px; font-weight: 500; min-width: 28px; text-align: right;">8</span>
+    <div class="sp-calc-slider-row">
+      <div class="sp-calc-slider-head">
+        <label for="sp-invoices" class="sp-calc-label">Invoices issued per month</label>
+        <span id="sp-invoices-out" class="sp-calc-value">3</span>
+      </div>
+      <input type="range" id="sp-invoices" min="0" max="60" step="1" value="3">
     </div>
-    <input type="range" id="invoices2" min="0" max="60" step="1" value="8" style="width: 100%;" />
-  </div>
 
-  <div style="margin-bottom: 1.25rem;">
-    <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 6px;">
-      <label for="onboardings2" style="font-size: 14px; font-weight: 500;">New clients onboarded per month</label>
-      <span id="onboardings2-out" style="font-size: 14px; font-weight: 500; min-width: 28px; text-align: right;">3</span>
+    <div class="sp-calc-slider-row">
+      <div class="sp-calc-slider-head">
+        <label for="sp-onboardings" class="sp-calc-label">New clients onboarded per month</label>
+        <span id="sp-onboardings-out" class="sp-calc-value">2</span>
+      </div>
+      <input type="range" id="sp-onboardings" min="0" max="20" step="1" value="2">
     </div>
-    <input type="range" id="onboardings2" min="0" max="20" step="1" value="3" style="width: 100%;" />
+
+    <div class="sp-calc-rate-section">
+      <label for="sp-rate" class="sp-calc-rate-label">Your hourly rate (USD)</label>
+      <div class="sp-calc-rate-input-wrap">
+        <span class="sp-calc-rate-symbol">$</span>
+        <input type="number" id="sp-rate" min="0" max="1000" step="5" value="75">
+      </div>
+    </div>
+
   </div>
 
-  <div style="border-top: 0.5px solid var(--color-border-tertiary); padding-top: 1rem;">
-    <label for="rate2" style="display: block; font-size: 13px; color: var(--color-text-secondary); margin-bottom: 6px;">Your hourly rate (USD)</label>
-    <div style="display: flex; align-items: center; gap: 8px; max-width: 200px;">
-      <span style="font-size: 14px; color: var(--color-text-secondary);">$</span>
-      <input type="number" id="rate2" min="0" max="1000" step="5" value="75" style="flex: 1;" />
+  <div class="sp-calc-stats">
+    <div class="sp-calc-stat">
+      <div class="sp-calc-stat-label">Hours per month</div>
+      <div id="sp-hours-month" class="sp-calc-stat-value">0</div>
+    </div>
+    <div class="sp-calc-stat">
+      <div class="sp-calc-stat-label">Hours per year</div>
+      <div id="sp-hours-year" class="sp-calc-stat-value">0</div>
+    </div>
+    <div class="sp-calc-stat sp-calc-stat-highlight">
+      <div class="sp-calc-stat-label">Cost per year</div>
+      <div id="sp-cost-year" class="sp-calc-stat-value">$0</div>
     </div>
   </div>
 
-</div>
+  <p id="sp-compare" class="sp-calc-compare">For reference: <strong>the average freelancer loses 204 hours a year</strong> to admin work.</p>
 
-<div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(170px, 1fr)); gap: 12px; margin-bottom: 1.25rem;">
-  <div style="background: var(--color-background-secondary); border-radius: var(--border-radius-md); padding: 1.25rem 1rem;">
-    <div style="font-size: 13px; color: var(--color-text-secondary); margin-bottom: 6px;">Hours per month</div>
-    <div id="hours-month2" style="font-size: 28px; font-weight: 500;">0</div>
+  <div class="sp-calc-actions">
+    <button id="sp-share">Copy my result</button>
+    <span id="sp-share-feedback" class="sp-calc-feedback">Copied to clipboard</span>
   </div>
-  <div style="background: var(--color-background-secondary); border-radius: var(--border-radius-md); padding: 1.25rem 1rem;">
-    <div style="font-size: 13px; color: var(--color-text-secondary); margin-bottom: 6px;">Hours per year</div>
-    <div id="hours-year2" style="font-size: 28px; font-weight: 500;">0</div>
-  </div>
-  <div style="background: #EEEDFE; border-radius: var(--border-radius-md); padding: 1.25rem 1rem;">
-    <div style="font-size: 13px; color: #3C3489; margin-bottom: 6px; font-weight: 500;">Cost per year</div>
-    <div id="cost-year2" style="font-size: 28px; font-weight: 500; color: #26215C;">$0</div>
-  </div>
-</div>
 
-<div style="display: flex; gap: 8px; align-items: center; margin-bottom: 1rem;">
-  <button id="share2" style="font-size: 13px;"><i class="ti ti-share" style="font-size: 14px; vertical-align: -2px; margin-right: 4px;" aria-hidden="true"></i>Copy my result</button>
-  <span id="share-feedback2" style="font-size: 13px; color: var(--color-text-success); opacity: 0; transition: opacity 0.2s;">Copied to clipboard</span>
-</div>
-
-<div style="background: #FEF3C7; border-left: 3px solid #D97706; padding: 10px 14px; border-radius: 6px; margin-bottom: 0.5rem;">
-  <p style="margin: 0; font-size: 12px; color: #78350F; line-height: 1.6;">
-    👀 <strong>This is the current footnote text:</strong>
+  <p class="sp-calc-footnote">
+    Per-task estimates derived from the 2026 Smallpdf Freelancer Freedom Index, a survey of 397 freelancers, consultants, and solo operators (IQR-filtered means).
   </p>
-</div>
-
-<p id="footnote-text" style="font-size: 12px; color: var(--color-text-tertiary); line-height: 1.6; padding: 0 4px; margin-top: 8px;">
-  Per-task estimates are placeholder values that will be replaced with measured averages from the 2026 freelance admin survey.
-</p>
 
 </div>
 
 <script>
 (function () {
-  var BENCHMARKS = { proposals2: 45, contracts2: 30, invoices2: 20, onboardings2: 60 };
+  // ============================================================
+  // BENCHMARKS — measured from the 2026 Smallpdf Freelancer
+  // Freedom Index (n=397). IQR-filtered means computed as:
+  // (weekly_hours_bucket_midpoint × 4.33 weeks/month × 60 min)
+  // ÷ monthly_task_count, across all qualifying respondents.
+  // ============================================================
+  var BENCHMARKS = {
+    "sp-proposals":   83,   // minutes per proposal
+    "sp-contracts":   121,  // minutes per contract or NDA
+    "sp-invoices":    96,   // minutes per invoice (incl. payment chasing)
+    "sp-onboardings": 112   // minutes per client onboarding
+  };
 
-  var inputs = {
-    proposals2:   document.getElementById("proposals2"),
-    contracts2:   document.getElementById("contracts2"),
-    invoices2:    document.getElementById("invoices2"),
-    onboardings2: document.getElementById("onboardings2")
-  };
-  var outs = {
-    proposals2:   document.getElementById("proposals2-out"),
-    contracts2:   document.getElementById("contracts2-out"),
-    invoices2:    document.getElementById("invoices2-out"),
-    onboardings2: document.getElementById("onboardings2-out")
-  };
-  var rateInput  = document.getElementById("rate2");
-  var hoursMonth = document.getElementById("hours-month2");
-  var hoursYear  = document.getElementById("hours-year2");
-  var costYear   = document.getElementById("cost-year2");
-  var shareBtn   = document.getElementById("share2");
-  var shareFeedback = document.getElementById("share-feedback2");
+  // Sample-wide average annual admin hours (Q1 × Q2 derivation)
+  // Source: 2026 Smallpdf Freelancer Freedom Index
+  var AVG_HOURS_PER_YEAR = 204;
+
+  var inputs = {};
+  var outs = {};
+  Object.keys(BENCHMARKS).forEach(function (k) {
+    inputs[k] = document.getElementById(k);
+    outs[k]   = document.getElementById(k + "-out");
+  });
+  var rateInput  = document.getElementById("sp-rate");
+  var hoursMonth = document.getElementById("sp-hours-month");
+  var hoursYear  = document.getElementById("sp-hours-year");
+  var costYear   = document.getElementById("sp-cost-year");
+  var compare    = document.getElementById("sp-compare");
+  var shareBtn   = document.getElementById("sp-share");
+  var shareFeedback = document.getElementById("sp-share-feedback");
 
   var lastResult = { hMonth: 0, hYear: 0, dYear: 0 };
 
@@ -128,6 +372,18 @@
     hoursYear.textContent  = hYear.toLocaleString();
     costYear.textContent   = "$" + dYear.toLocaleString();
 
+    // Comparison messaging
+    var diff = hYear - AVG_HOURS_PER_YEAR;
+    if (hYear === 0) {
+      compare.innerHTML = "For reference: <strong>the average freelancer loses 204 hours a year</strong> to admin work.";
+    } else if (Math.abs(diff) <= 10) {
+      compare.innerHTML = "You're right around the average — <strong>freelancers lose 204 hours a year</strong> to admin work.";
+    } else if (diff > 0) {
+      compare.innerHTML = "That's <strong>" + Math.abs(diff).toLocaleString() + " hours more</strong> than the average freelancer, who loses 204 hours a year.";
+    } else {
+      compare.innerHTML = "That's <strong>" + Math.abs(diff).toLocaleString() + " hours less</strong> than the average freelancer, who loses 204 hours a year.";
+    }
+
     lastResult = { hMonth: hMonth, hYear: hYear, dYear: dYear };
   }
 
@@ -137,7 +393,7 @@
   rateInput.addEventListener("input", calc);
 
   shareBtn.addEventListener("click", function () {
-    var text = "I lose " + lastResult.hYear.toLocaleString() + " hours a year to admin work. That's $" + lastResult.dYear.toLocaleString() + " in billable time.";
+    var text = "I lose " + lastResult.hYear.toLocaleString() + " hours a year to admin work — and $" + lastResult.dYear.toLocaleString() + " in billable time. The average freelancer loses 204 hours.";
     if (navigator.clipboard && navigator.clipboard.writeText) {
       navigator.clipboard.writeText(text).then(function () {
         shareFeedback.style.opacity = "1";
@@ -149,3 +405,6 @@
   calc();
 })();
 </script>
+
+</body>
+</html>
