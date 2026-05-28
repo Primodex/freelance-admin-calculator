@@ -1,0 +1,151 @@
+<h2 class="sr-only">Interactive calculator that estimates how many hours and dollars per year a freelancer loses to admin work.</h2>
+
+<div style="padding: 1rem 0;">
+
+<div style="display: flex; align-items: baseline; justify-content: space-between; margin-bottom: 0.5rem; flex-wrap: wrap; gap: 8px;">
+  <h1 style="margin: 0; font-size: 22px; font-weight: 500;">How much is admin costing you?</h1>
+  <span style="display: inline-block; background: var(--color-background-warning); color: var(--color-text-warning); font-size: 11px; padding: 3px 10px; border-radius: var(--border-radius-md); font-weight: 500;">Demo data</span>
+</div>
+
+<p style="margin: 0 0 1.5rem; font-size: 14px; color: var(--color-text-secondary); line-height: 1.6;">Tell us about a typical month. We'll show you what your paperwork is actually worth in hours and dollars.</p>
+
+<div style="background: var(--color-background-secondary); border-radius: var(--border-radius-lg); padding: 1.25rem; margin-bottom: 1.25rem;">
+
+  <div style="margin-bottom: 1rem;">
+    <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 6px;">
+      <label for="proposals2" style="font-size: 14px; font-weight: 500;">Proposals sent per month</label>
+      <span id="proposals2-out" style="font-size: 14px; font-weight: 500; min-width: 28px; text-align: right;">5</span>
+    </div>
+    <input type="range" id="proposals2" min="0" max="40" step="1" value="5" style="width: 100%;" />
+  </div>
+
+  <div style="margin-bottom: 1rem;">
+    <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 6px;">
+      <label for="contracts2" style="font-size: 14px; font-weight: 500;">Contracts or NDAs per month</label>
+      <span id="contracts2-out" style="font-size: 14px; font-weight: 500; min-width: 28px; text-align: right;">4</span>
+    </div>
+    <input type="range" id="contracts2" min="0" max="40" step="1" value="4" style="width: 100%;" />
+  </div>
+
+  <div style="margin-bottom: 1rem;">
+    <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 6px;">
+      <label for="invoices2" style="font-size: 14px; font-weight: 500;">Invoices issued per month</label>
+      <span id="invoices2-out" style="font-size: 14px; font-weight: 500; min-width: 28px; text-align: right;">8</span>
+    </div>
+    <input type="range" id="invoices2" min="0" max="60" step="1" value="8" style="width: 100%;" />
+  </div>
+
+  <div style="margin-bottom: 1.25rem;">
+    <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 6px;">
+      <label for="onboardings2" style="font-size: 14px; font-weight: 500;">New clients onboarded per month</label>
+      <span id="onboardings2-out" style="font-size: 14px; font-weight: 500; min-width: 28px; text-align: right;">3</span>
+    </div>
+    <input type="range" id="onboardings2" min="0" max="20" step="1" value="3" style="width: 100%;" />
+  </div>
+
+  <div style="border-top: 0.5px solid var(--color-border-tertiary); padding-top: 1rem;">
+    <label for="rate2" style="display: block; font-size: 13px; color: var(--color-text-secondary); margin-bottom: 6px;">Your hourly rate (USD)</label>
+    <div style="display: flex; align-items: center; gap: 8px; max-width: 200px;">
+      <span style="font-size: 14px; color: var(--color-text-secondary);">$</span>
+      <input type="number" id="rate2" min="0" max="1000" step="5" value="75" style="flex: 1;" />
+    </div>
+  </div>
+
+</div>
+
+<div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(170px, 1fr)); gap: 12px; margin-bottom: 1.25rem;">
+  <div style="background: var(--color-background-secondary); border-radius: var(--border-radius-md); padding: 1.25rem 1rem;">
+    <div style="font-size: 13px; color: var(--color-text-secondary); margin-bottom: 6px;">Hours per month</div>
+    <div id="hours-month2" style="font-size: 28px; font-weight: 500;">0</div>
+  </div>
+  <div style="background: var(--color-background-secondary); border-radius: var(--border-radius-md); padding: 1.25rem 1rem;">
+    <div style="font-size: 13px; color: var(--color-text-secondary); margin-bottom: 6px;">Hours per year</div>
+    <div id="hours-year2" style="font-size: 28px; font-weight: 500;">0</div>
+  </div>
+  <div style="background: #EEEDFE; border-radius: var(--border-radius-md); padding: 1.25rem 1rem;">
+    <div style="font-size: 13px; color: #3C3489; margin-bottom: 6px; font-weight: 500;">Cost per year</div>
+    <div id="cost-year2" style="font-size: 28px; font-weight: 500; color: #26215C;">$0</div>
+  </div>
+</div>
+
+<div style="display: flex; gap: 8px; align-items: center; margin-bottom: 1rem;">
+  <button id="share2" style="font-size: 13px;"><i class="ti ti-share" style="font-size: 14px; vertical-align: -2px; margin-right: 4px;" aria-hidden="true"></i>Copy my result</button>
+  <span id="share-feedback2" style="font-size: 13px; color: var(--color-text-success); opacity: 0; transition: opacity 0.2s;">Copied to clipboard</span>
+</div>
+
+<div style="background: #FEF3C7; border-left: 3px solid #D97706; padding: 10px 14px; border-radius: 6px; margin-bottom: 0.5rem;">
+  <p style="margin: 0; font-size: 12px; color: #78350F; line-height: 1.6;">
+    👀 <strong>This is the current footnote text:</strong>
+  </p>
+</div>
+
+<p id="footnote-text" style="font-size: 12px; color: var(--color-text-tertiary); line-height: 1.6; padding: 0 4px; margin-top: 8px;">
+  Per-task estimates are placeholder values that will be replaced with measured averages from the 2026 freelance admin survey.
+</p>
+
+</div>
+
+<script>
+(function () {
+  var BENCHMARKS = { proposals2: 45, contracts2: 30, invoices2: 20, onboardings2: 60 };
+
+  var inputs = {
+    proposals2:   document.getElementById("proposals2"),
+    contracts2:   document.getElementById("contracts2"),
+    invoices2:    document.getElementById("invoices2"),
+    onboardings2: document.getElementById("onboardings2")
+  };
+  var outs = {
+    proposals2:   document.getElementById("proposals2-out"),
+    contracts2:   document.getElementById("contracts2-out"),
+    invoices2:    document.getElementById("invoices2-out"),
+    onboardings2: document.getElementById("onboardings2-out")
+  };
+  var rateInput  = document.getElementById("rate2");
+  var hoursMonth = document.getElementById("hours-month2");
+  var hoursYear  = document.getElementById("hours-year2");
+  var costYear   = document.getElementById("cost-year2");
+  var shareBtn   = document.getElementById("share2");
+  var shareFeedback = document.getElementById("share-feedback2");
+
+  var lastResult = { hMonth: 0, hYear: 0, dYear: 0 };
+
+  function calc() {
+    var totalMinutes = 0;
+    Object.keys(BENCHMARKS).forEach(function (key) {
+      var count = parseInt(inputs[key].value, 10) || 0;
+      outs[key].textContent = count;
+      totalMinutes += count * BENCHMARKS[key];
+    });
+
+    var rate = parseFloat(rateInput.value) || 0;
+    var totalHours = totalMinutes / 60;
+    var hMonth = Math.round(totalHours);
+    var hYear  = Math.round(totalHours * 12);
+    var dYear  = Math.round(totalHours * 12 * rate);
+
+    hoursMonth.textContent = hMonth.toLocaleString();
+    hoursYear.textContent  = hYear.toLocaleString();
+    costYear.textContent   = "$" + dYear.toLocaleString();
+
+    lastResult = { hMonth: hMonth, hYear: hYear, dYear: dYear };
+  }
+
+  Object.keys(inputs).forEach(function (key) {
+    inputs[key].addEventListener("input", calc);
+  });
+  rateInput.addEventListener("input", calc);
+
+  shareBtn.addEventListener("click", function () {
+    var text = "I lose " + lastResult.hYear.toLocaleString() + " hours a year to admin work. That's $" + lastResult.dYear.toLocaleString() + " in billable time.";
+    if (navigator.clipboard && navigator.clipboard.writeText) {
+      navigator.clipboard.writeText(text).then(function () {
+        shareFeedback.style.opacity = "1";
+        setTimeout(function () { shareFeedback.style.opacity = "0"; }, 1800);
+      });
+    }
+  });
+
+  calc();
+})();
+</script>
